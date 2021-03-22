@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "785048112986",
+    "project_id": "unifar-me",
+    "storage_bucket": "unifar-me.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785048112986:android:f48fedd046297618df2d63",
+        "android_client_info": {
+          "package_name": "unifar.me"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785048112986-j8np07n23b152gks4p1lsfoeggvngl8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBerifZ58bPgXEnesXIMPw2U_nSwpVno3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785048112986-j8np07n23b152gks4p1lsfoeggvngl8o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
