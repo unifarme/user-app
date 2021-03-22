@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:unifarme/constants/colors.dart';
 import 'package:unifarme/src/screens/onboard/onboard.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -32,12 +34,24 @@ class _SplashScreenState extends State<SplashScreen> {
       decoration: new BoxDecoration(
         gradient: new LinearGradient(
           colors: [
-            const Color(0xFF3366FF),
-            const Color(0xFF00CCFF),
+            HexColor("${green}"),
+            HexColor("${cream}"),
           ],
           begin: const FractionalOffset(0.0, 0.0),
           end: const FractionalOffset(1.0, 0.0),
         ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/logos/logo.png',
+            fit: BoxFit.fitWidth,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+          ),
+        ],
       ),
     );
   }
