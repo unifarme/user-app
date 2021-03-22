@@ -15,16 +15,16 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // Timer(
-    //   Duration(seconds: 3),
-    //   // () => Navigator.push(
-    //   //   context,
-    //   //   MaterialPageRoute(
-    //   //     builder: (context) => OnBoard(),
-    //   //   ),
-    //   // ),
-    //   () => Navigator.of(context).pushNamed("/onboard"),
-    // );
+    Timer(
+      Duration(seconds: 3),
+      // () => Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => OnBoard(),
+      //   ),
+      // ),
+      () => Navigator.of(context).pushNamed("/onboard"),
+    );
   }
 
   Widget build(BuildContext context) {
