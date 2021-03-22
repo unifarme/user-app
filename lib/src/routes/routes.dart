@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unifarme/src/screens/login/login.dart';
 import 'package:unifarme/src/screens/onboard/onboard.dart';
 import 'package:unifarme/src/splashscreen.dart';
 
@@ -13,7 +14,11 @@ class RouteGenerator {
         );
       case '/onboard':
         return MaterialPageRoute(
-          builder: (_) => OnBoard(),
+          builder: (_) => OnBoarding(),
+        );
+      case '/login':
+        return MaterialPageRoute(
+          builder: (_) => Login(),
         );
 
       // case '/':
