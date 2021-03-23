@@ -3,16 +3,8 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:international_phone_input/international_phone_input.dart';
 import 'package:unifarme/constants/colors.dart';
+import 'package:unifarme/src/screens/unifarmeLogo.dart';
 
-import '../../../constants/colors.dart';
-import '../../../constants/colors.dart';
-import '../../../constants/colors.dart';
-import '../../../constants/colors.dart';
-import '../../../constants/colors.dart';
-import '../../../constants/colors.dart';
-import '../../../constants/colors.dart';
-import '../../../constants/colors.dart';
-import '../../../constants/colors.dart';
 import '../../../constants/colors.dart';
 
 class Login extends StatefulWidget {
@@ -21,8 +13,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   String phoneNumber;
   String phoneIsoCode;
 
@@ -37,6 +27,19 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Container(
         padding: EdgeInsets.all(20.0),
         width: MediaQuery.of(context).size.width,
@@ -48,11 +51,7 @@ class _LoginState extends State<Login> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              "assets/logos/logo.png",
-              width: 120.0,
-              height: 120.0,
-            ),
+            UnifarmeLogo(),
             SizedBox(
               height: 10,
             ),
@@ -143,6 +142,37 @@ class _LoginState extends State<Login> {
               child: SignInButton(
                 Buttons.Google,
                 onPressed: () {},
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              thickness: 2,
+            ),
+            Container(
+              child: Row(
+                children: [
+                  Text(
+                    "New to Unifar.me",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/signup');
+                    },
+                    child: Text(
+                      "Signup",
+                      style: TextStyle(
+                        color: Colors.pink,
+                        fontSize: 20,
+                      ),
+                    ),
+                  )
+                ],
               ),
             )
           ],

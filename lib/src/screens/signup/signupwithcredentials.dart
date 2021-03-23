@@ -1,25 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:email_validator/email_validator.dart' as vd;
 import 'package:loading/indicator/ball_spin_fade_loader_indicator.dart';
 import 'package:loading/loading.dart';
+import 'package:unifarme/src/screens/unifarmeLogo.dart';
+import 'package:email_validator/email_validator.dart' as vd;
 
 import '../../../constants/colors.dart';
 
-class LoginCredentials extends StatefulWidget {
+class SignupWithCredentials extends StatefulWidget {
   @override
-  _LoginCredentialsState createState() => _LoginCredentialsState();
+  _SignupWithCredentialsState createState() => _SignupWithCredentialsState();
 }
 
-class _LoginCredentialsState extends State<LoginCredentials> {
+class _SignupWithCredentialsState extends State<SignupWithCredentials> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool clickedLogin = false;
+  bool clickedSignup = false;
   String email = "";
   String password = "";
+  String name = "";
 
   var validEmial = null;
   var validPassword = null;
+  var validName = null;
+
+  final passwordValidator = MultiValidator([
+    RequiredValidator(errorText: 'password is required'),
+    MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
+    PatternValidator(r'(?=.*?[#?!@$%^&*-])',
+        errorText: 'passwords must have at least one special character')
+  ]);
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +56,12 @@ class _LoginCredentialsState extends State<LoginCredentials> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              "assets/logos/logo.png",
-              width: 120.0,
-              height: 120.0,
-            ),
+            UnifarmeLogo(),
             SizedBox(
               height: 20,
             ),
             Text(
-              "Login With Credentials",
+              "Signup With Credentials",
               style: TextStyle(fontSize: 25),
             ),
             SizedBox(
@@ -72,6 +79,10 @@ class _LoginCredentialsState extends State<LoginCredentials> {
       key: _formKey,
       child: Column(
         children: [
+          nameField(context),
+          SizedBox(
+            height: 10,
+          ),
           emailField(context),
           SizedBox(
             height: 10,
@@ -84,7 +95,7 @@ class _LoginCredentialsState extends State<LoginCredentials> {
           SizedBox(
             height: 5,
           ),
-          (clickedLogin ? loadingWidget() : Text("")),
+          (clickedSignup ? loadingWidget() : Text("")),
         ],
       ),
     );
@@ -137,6 +148,52 @@ class _LoginCredentialsState extends State<LoginCredentials> {
     );
   }
 
+  Widget nameField(context) {
+    return Theme(
+      data: Theme.of(context).copyWith(primaryColor: HexColor(blueVar)),
+      child: TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          labelText: "name",
+          hintStyle: TextStyle(fontSize: 25),
+          hintText: "Boanerges",
+          labelStyle: TextStyle(
+            color: HexColor(green),
+          ),
+          prefixIcon: Icon(
+            FontAwesomeIcons.pen,
+            color: HexColor(green),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: HexColor(green),
+            ),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: HexColor(green),
+            ),
+          ),
+        ),
+        validator: (name) {
+          if (name.length == 0) {
+            return "Name field required";
+          }
+          return null;
+        },
+        onSaved: (name) {
+          this.name = name;
+        },
+      ),
+    );
+  }
+
   Widget passwordField(context) {
     return Theme(
       child: TextFormField(
@@ -173,6 +230,7 @@ class _LoginCredentialsState extends State<LoginCredentials> {
         onSaved: (password) {
           this.password = password;
         },
+        validator: passwordValidator,
       ),
       data: Theme.of(context).copyWith(primaryColor: HexColor(blueVar)),
     );
@@ -190,18 +248,18 @@ class _LoginCredentialsState extends State<LoginCredentials> {
         ),
         onPressed: () {
           setState(() {
-            clickedLogin = true;
+            clickedSignup = true;
           });
           if (_formKey.currentState.validate()) {
-            // print("object");
             _formKey.currentState.save();
+            // print("object");
           } else {}
           setState(() {
-            clickedLogin = false;
+            clickedSignup = false;
           });
         },
         child: Text(
-          "Login",
+          "Signup",
           style: TextStyle(
             color: HexColor(blueVarText),
             fontSize: 20,

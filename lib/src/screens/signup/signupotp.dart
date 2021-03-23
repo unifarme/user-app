@@ -1,17 +1,15 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../../../constants/colors.dart';
 
-class OTPScreen extends StatefulWidget {
+class SignupOtp extends StatefulWidget {
   @override
-  _OTPScreenState createState() => _OTPScreenState();
+  _SignupOtpState createState() => _SignupOtpState();
 }
 
-class _OTPScreenState extends State<OTPScreen> {
+class _SignupOtpState extends State<SignupOtp> {
   var firstController = TextEditingController();
   var secondController = TextEditingController();
   var thirdController = TextEditingController();
@@ -21,6 +19,7 @@ class _OTPScreenState extends State<OTPScreen> {
   FocusNode thirdFocusNode = FocusNode();
   FocusNode fourthFocusNode = FocusNode();
   FocusNode fifthFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
