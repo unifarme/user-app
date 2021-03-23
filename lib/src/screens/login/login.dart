@@ -106,7 +106,9 @@ class _LoginState extends State<Login> {
               height: 50,
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/login/credential");
+                },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
                     HexColor(blueVar),
