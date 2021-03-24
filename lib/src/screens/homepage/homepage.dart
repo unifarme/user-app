@@ -3,13 +3,13 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:unifarme/constants/colors.dart';
 import 'package:unifarme/src/providers/navBottom.dart';
-import 'package:unifarme/src/screens/hompage/appBar.dart';
-import 'package:unifarme/src/screens/hompage/buttomNav.dart';
-import 'package:unifarme/src/screens/hompage/farmer/farmer.dart';
-import 'package:unifarme/src/screens/hompage/friends/friend.dart';
-import 'package:unifarme/src/screens/hompage/home/home.dart';
-import 'package:unifarme/src/screens/hompage/setting/settings.dart';
-import 'package:unifarme/src/screens/hompage/userDrawer.dart';
+import 'package:unifarme/src/screens/homepage/appBar.dart';
+import 'package:unifarme/src/screens/homepage/buttomNav.dart';
+import 'package:unifarme/src/screens/homepage/farmer/farmer.dart';
+import 'package:unifarme/src/screens/homepage/friends/friend.dart';
+import 'package:unifarme/src/screens/homepage/home/home.dart';
+import 'package:unifarme/src/screens/homepage/setting/settings.dart';
+import 'package:unifarme/src/screens/homepage/userDrawer.dart';
 
 class HomePage extends StatefulWidget {
   @override
