@@ -305,6 +305,7 @@ class _OTPScreenState extends State<OTPScreen> {
                       //   borderRadius: BorderRadius.circular(5.0),
                       // ),
                       onPressed: () {
+                        Navigator.of(context).pushNamed('/home');
                         // Navigator.push(context,
                         //     MaterialPageRoute(builder: (context) => Home()));
                       },

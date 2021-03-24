@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unifarme/src/screens/hompage/homepage.dart';
 import 'package:unifarme/src/screens/login/login.dart';
 import 'package:unifarme/src/screens/login/loginWithCredential.dart';
 import 'package:unifarme/src/screens/login/otpscreen.dart';
@@ -41,6 +42,8 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => LoginCredentials(),
         );
+      case '/home':
+        return MaterialPageRoute(builder: (_) => HomePage());
 
       // case '/':
       //   return MaterialPageRoute(builder: (_) => Cover());
