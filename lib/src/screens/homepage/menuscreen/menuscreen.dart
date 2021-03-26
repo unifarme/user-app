@@ -20,7 +20,7 @@ class _UserMenuScreenState extends State<UserMenuScreen> {
             decoration: BoxDecoration(color: HexColor(blueVar)),
             currentAccountPicture: GestureDetector(
               onTap: () {
-                Navigator.of(context).popAndPushNamed('/home');
+                Navigator.of(context).popAndPushNamed('/profile');
               },
               child: CircleAvatar(
                 backgroundImage: NetworkImage(

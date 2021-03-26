@@ -15,20 +15,25 @@ class UserAppBar extends StatelessWidget {
               value: "logout",
               child: GestureDetector(
                 child: Text('Logout'),
-                onTap: () async {
-                  // SharedPreferences pref =
-                  //     await SharedPreferences.getInstance();
-                  // pref.setBool("logged", false);
-                  // pref.remove("passwrd");
-                  // pref.remove("email");
-                  // print("Logout");
-                },
+                onTap: () async {},
               ),
             ),
             PopupMenuItem(
               key: Key("settings"),
               value: "settings",
-              child: Text('Settings'),
+              child: GestureDetector(
+                child: Text('Settings'),
+              ),
+            ),
+            PopupMenuItem(
+              key: Key("profile"),
+              value: "profile",
+              child: GestureDetector(
+                child: Text('Profile'),
+                onTap: () {
+                  Navigator.of(context).pushNamed("/profile");
+                },
+              ),
             ),
           ],
           // icon: Consumer<StudentInfoProvider>(
