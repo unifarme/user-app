@@ -11,33 +11,7 @@ class _HomeState extends State<Home> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            forceElevated: true,
-            elevation: 4,
-            floating: true,
-            snap: true,
-            title: Text(
-              "Search Example",
-            ),
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.search,
-                ),
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.filter_list,
-                ),
-                onPressed: () {},
-              ),
-            ],
-          ),
-        ],
-      ),
+      child: Text("Hello"),
     );
   }
 }

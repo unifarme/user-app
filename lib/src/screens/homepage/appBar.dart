@@ -31,7 +31,7 @@ class UserAppBar extends StatelessWidget {
               child: GestureDetector(
                 child: Text('Profile'),
                 onTap: () {
-                  Navigator.of(context).pushNamed("/profile");
+                  Navigator.of(context).popAndPushNamed("/profile");
                 },
               ),
             ),

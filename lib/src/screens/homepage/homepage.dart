@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -32,20 +33,28 @@ class _HomePageState extends State<HomePage> {
                   value: "logout",
                   child: GestureDetector(
                     child: Text('Logout'),
-                    onTap: () async {
-                      // SharedPreferences pref =
-                      //     await SharedPreferences.getInstance();
-                      // pref.setBool("logged", false);
-                      // pref.remove("passwrd");
-                      // pref.remove("email");
-                      // print("Logout");
-                    },
+                    onTap: () async {},
                   ),
                 ),
                 PopupMenuItem(
                   key: Key("settings"),
                   value: "settings",
-                  child: Text('Settings'),
+                  child: GestureDetector(
+                    child: Text('Settings'),
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/profile");
+                    },
+                  ),
+                ),
+                PopupMenuItem(
+                  key: Key("profile"),
+                  value: "profile",
+                  child: GestureDetector(
+                    child: Text('Profile'),
+                    onTap: () {
+                      Navigator.of(context).pushNamed("/profile");
+                    },
+                  ),
                 ),
               ],
               icon: CircleAvatar(
@@ -63,6 +72,18 @@ class _HomePageState extends State<HomePage> {
                 } // log the student out at the back end
               },
             ),
+            IconButton(
+              icon: Badge(
+                badgeContent: Text("3"),
+                child: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {},
+            )
+
+            // IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {})
           ],
         ),
         drawer: UserDrawer(),

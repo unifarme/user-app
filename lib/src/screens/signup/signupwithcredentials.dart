@@ -48,27 +48,29 @@ class _SignupWithCredentialsState extends State<SignupWithCredentials> {
           },
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.all(30),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            UnifarmeLogo(),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Signup With Credentials",
-              style: TextStyle(fontSize: 25),
-            ),
-            SizedBox(
-              height: 35,
-            ),
-            loginForm(context),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(30),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              UnifarmeLogo(),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Signup With Credentials",
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(
+                height: 35,
+              ),
+              loginForm(context),
+            ],
+          ),
         ),
       ),
     );
