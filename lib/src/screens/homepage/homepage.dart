@@ -72,24 +72,46 @@ class _HomePageState extends State<HomePage> {
                 } // log the student out at the back end
               },
             ),
+
             IconButton(
               icon: Badge(
-                badgeContent: Text("3"),
+                badgeContent: Text(
+                  "4",
+                  style: TextStyle(color: Colors.white),
+                ),
                 child: Icon(
                   Icons.shopping_cart,
                   color: Colors.white,
                 ),
               ),
               onPressed: () {},
-            )
+            ),
 
+            IconButton(
+              icon: Badge(
+                badgeContent: Text(
+                  "3",
+                  style: TextStyle(color: Colors.white),
+                ),
+                child: Icon(
+                  Icons.notifications,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {},
+            )
             // IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {})
           ],
         ),
         drawer: UserDrawer(),
         bottomNavigationBar: BottomNav(),
         // body: Text("Hello"));
-        body: [Home(), Text("News"), Farmer(), Friend(), Settings()]
-            .elementAt(navIndex.getBottomNavIndex));
+        body: [
+          Home(),
+          Text("News"),
+          Farmer(),
+          Friend(),
+          Settings(),
+        ].elementAt(navIndex.getBottomNavIndex));
   }
 }

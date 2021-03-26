@@ -71,6 +71,10 @@ flutter:
   assets:
     - assets/logos/
     - assets/onboarding/
+    - assets/categories/fruits/
+    - assets/categories/vegetables/
+    - assets/advert/
+    - assets/nearbyFarms/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
