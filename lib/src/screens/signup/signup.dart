@@ -40,88 +40,90 @@ class _SignupState extends State<Signup> {
           },
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.all(30),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            UnifarmeLogo(),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              "Signup",
-              style: logsignStyle,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            InternationalPhoneInput(
-              onPhoneNumberChange: onPhoneNumberChange,
-              initialPhoneNumber: phoneNumber,
-              initialSelection: phoneIsoCode,
-              enabledCountries: ['+91'],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            signupBtn(),
-            SizedBox(
-              height: 10,
-            ),
-            Divider(
-              thickness: 2,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            signupwithCredentials(),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: SignInButton(
-                Buttons.Google,
-                onPressed: () {},
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(30),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              UnifarmeLogo(),
+              SizedBox(
+                height: 10,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Divider(
-              thickness: 2,
-            ),
-            Container(
-              child: Row(
-                children: [
-                  Text(
-                    "Already got an account",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushNamed('/login');
-                    },
-                    child: Text(
-                      "login",
-                      style: TextStyle(
-                        color: Colors.pink,
-                        fontSize: 20,
-                      ),
+              Text(
+                "Signup",
+                style: logsignStyle,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              InternationalPhoneInput(
+                onPhoneNumberChange: onPhoneNumberChange,
+                initialPhoneNumber: phoneNumber,
+                initialSelection: phoneIsoCode,
+                enabledCountries: ['+91'],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              signupBtn(),
+              SizedBox(
+                height: 10,
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              signupwithCredentials(),
+              SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: SignInButton(
+                  Buttons.Google,
+                  onPressed: () {},
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              Container(
+                child: Row(
+                  children: [
+                    Text(
+                      "Already got an account",
+                      style: TextStyle(fontSize: 20),
                     ),
-                  )
-                ],
-              ),
-            )
-          ],
+                    SizedBox(
+                      width: 10,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/login');
+                      },
+                      child: Text(
+                        "login",
+                        style: TextStyle(
+                          color: Colors.pink,
+                          fontSize: 20,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
