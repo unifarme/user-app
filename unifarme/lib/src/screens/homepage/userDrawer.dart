@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+// import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:unifarme/constants/colors.dart';
 import 'package:unifarme/src/screens/homepage/homepage.dart';
@@ -11,7 +11,7 @@ class UserDrawer extends StatefulWidget {
 }
 
 class _UserDrawerState extends State<UserDrawer> {
-  final _drawerController = ZoomDrawerController();
+  // final _drawerController = ZoomDrawerController();
   @override
   Widget build(BuildContext context) {
     return Drawer(
