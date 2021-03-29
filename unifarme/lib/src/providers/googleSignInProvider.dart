@@ -59,12 +59,12 @@ class GoogleSignInProvider extends ChangeNotifier {
         isLogged = true;
         isSigningIn = false;
         return new UserModel(
-          name: user.displayName,
-          email: user.email,
-          googleId: user.id,
-          picture: user.photoUrl,
-          logged: true,
-        );
+            name: user.displayName,
+            email: user.email,
+            googleId: user.id,
+            picture: user.photoUrl,
+            logged: true,
+            isFarmer: false);
       } on FirebaseAuthException catch (e) {
         print(e);
         if (e.code == 'account-exists-with-different-credential') {
