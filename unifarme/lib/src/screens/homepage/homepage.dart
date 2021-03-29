@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:unifarme/constants/colors.dart';
+import 'package:unifarme/src/providers/googleSignInProvider.dart';
 import 'package:unifarme/src/providers/navBottom.dart';
+import 'package:unifarme/src/providers/userProvider.dart';
 import 'package:unifarme/src/screens/homepage/appBar.dart';
 import 'package:unifarme/src/screens/homepage/buttomNav.dart';
 import 'package:unifarme/src/screens/homepage/farmer/farmer.dart';
@@ -20,6 +22,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final userModelProv = Provider.of<UserProvider>(context);
     BottomNavIndexProvider navIndex =
         Provider.of<BottomNavIndexProvider>(context);
     return Scaffold(
@@ -59,37 +62,70 @@ class _HomePageState extends State<HomePage> {
               ],
               icon: CircleAvatar(
                 backgroundImage: NetworkImage(
-                  "https://avatars.githubusercontent.com/u/43884482?s=460&u=c5d4799c520a8ac3faef1153596bcbaa6be44418&v=4",
+                  userModelProv.getUserModel.picture,
                 ),
               ),
               onSelected: (value) async {
+                print(value);
                 if (value == "settings") {
-                  Navigator.of(context).pushNamed('/student/sidemenu/settings');
-                } else {
+                  Navigator.of(context).pushNamed('/settings');
+                } else if (value == "profile") {
+                  Navigator.of(context).popAndPushNamed('/profile');
                   // Navigator.of(context).popUntil(ModalRoute.withName('/login'));
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/student/login', ModalRoute.withName('/studentoption'));
+                  // Navigator.of(context).pushNamedAndRemoveUntil(
+                  //     '\/login', ModalRoute.withName('/option'));
+                } else if (value == "logout") {
+                  final googleSignInProvider =
+                      Provider.of<GoogleSignInProvider>(context, listen: false);
+                  await googleSignInProvider.logout();
+                  print("Yes");
+                  Navigator.of(context).popAndPushNamed('/login');
                 } // log the student out at the back end
+                else {
+                  print(value);
+                }
               },
             ),
+
             IconButton(
               icon: Badge(
-                badgeContent: Text("3"),
+                badgeContent: Text(
+                  "4",
+                  style: TextStyle(color: Colors.white),
+                ),
                 child: Icon(
                   Icons.shopping_cart,
                   color: Colors.white,
                 ),
               ),
               onPressed: () {},
-            )
+            ),
 
+            IconButton(
+              icon: Badge(
+                badgeContent: Text(
+                  "3",
+                  style: TextStyle(color: Colors.white),
+                ),
+                child: Icon(
+                  Icons.notifications,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {},
+            )
             // IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {})
           ],
         ),
         drawer: UserDrawer(),
         bottomNavigationBar: BottomNav(),
         // body: Text("Hello"));
-        body: [Home(), Text("News"), Farmer(), Friend(), Settings()]
-            .elementAt(navIndex.getBottomNavIndex));
+        body: [
+          Home(),
+          Text("News"),
+          Farmer(),
+          Friend(),
+          Settings(),
+        ].elementAt(navIndex.getBottomNavIndex));
   }
 }

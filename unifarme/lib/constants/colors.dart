@@ -5,11 +5,16 @@ var green = "#AADE87";
 var cream = "#F7F8F3";
 var lightBlueVar = "#ADDCCA";
 var blueVar = "#52ADA2";
+var myGray = "#eeeeee";
 
 var greenColorText = "#447B1C";
 var creamColorText = "#258C80";
 var lightBlueVarText = "#258C80";
 var blueVarText = "#F7F8F3";
+
+Color greyColor = Colors.grey;
+Color whiteColor = Colors.white;
+Color blackColor = Colors.black;
 
 SizedBox heightSpace = SizedBox(height: 10.0);
 SizedBox widthSpace = SizedBox(width: 10.0);

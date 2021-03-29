@@ -3,6 +3,9 @@ import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:international_phone_input/international_phone_input.dart';
+import 'package:provider/provider.dart';
+import 'package:unifarme/src/providers/googleSignInProvider.dart';
+import 'package:unifarme/src/providers/userProvider.dart';
 import 'package:unifarme/src/screens/unifarmeLogo.dart';
 
 import '../../../constants/colors.dart';
@@ -88,7 +91,19 @@ class _SignupState extends State<Signup> {
                 height: 50,
                 child: SignInButton(
                   Buttons.Google,
-                  onPressed: () {},
+                  onPressed: () async {
+                    final userModelProv =
+                        Provider.of<UserProvider>(context, listen: false);
+                    final googleSignIn = Provider.of<GoogleSignInProvider>(
+                      context,
+                      listen: false,
+                    );
+                    final data = await googleSignIn.login();
+                    if (data != null) {
+                      userModelProv.updateUserModel(data);
+                      Navigator.of(context).popAndPushNamed('/home');
+                    }
+                  },
                 ),
               ),
               SizedBox(

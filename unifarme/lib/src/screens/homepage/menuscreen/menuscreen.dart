@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 import 'package:unifarme/constants/colors.dart';
+import 'package:unifarme/src/providers/userProvider.dart';
 
 class UserMenuScreen extends StatefulWidget {
   @override
@@ -11,12 +13,13 @@ class UserMenuScreen extends StatefulWidget {
 class _UserMenuScreenState extends State<UserMenuScreen> {
   @override
   Widget build(BuildContext context) {
+    final userModelProv = Provider.of<UserProvider>(context);
     return Container(
       child: Column(
         children: [
           UserAccountsDrawerHeader(
-            accountEmail: Text("samsonnkrumah253@gmail.com"),
-            accountName: Text("Samson kwaku Nkrumah"),
+            accountEmail: Text(userModelProv.getUserModel.email),
+            accountName: Text(userModelProv.getUserModel.name),
             decoration: BoxDecoration(color: HexColor(blueVar)),
             currentAccountPicture: GestureDetector(
               onTap: () {
@@ -24,7 +27,8 @@ class _UserMenuScreenState extends State<UserMenuScreen> {
               },
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    "https://avatars.githubusercontent.com/u/43884482?s=460&u=c5d4799c520a8ac3faef1153596bcbaa6be44418&v=4"),
+                  userModelProv.getUserModel.picture,
+                ),
               ),
             ),
           ),

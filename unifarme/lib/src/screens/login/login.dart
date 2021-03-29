@@ -1,9 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:international_phone_input/international_phone_input.dart';
+import 'package:provider/provider.dart';
 import 'package:unifarme/constants/colors.dart';
+import 'package:unifarme/src/providers/googleSignInProvider.dart';
+import 'package:unifarme/src/providers/userProvider.dart';
+import 'package:unifarme/src/request/auth.dart';
 import 'package:unifarme/src/screens/unifarmeLogo.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../../constants/colors.dart';
 
@@ -13,6 +20,13 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var _user;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  bool isSignIn = false;
+  bool google = false;
+
   String phoneNumber;
   String phoneIsoCode;
 
@@ -26,6 +40,23 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    final authGoogleProv = Provider.of<GoogleSignInProvider>(context);
+    final userModelProv = Provider.of<UserProvider>(context, listen: false);
+
+    if (authGoogleProv.getIsSigningIn) {
+      return Container(
+        width: width,
+        height: height,
+        color: HexColor(blueVar),
+        child: SpinKitHourGlass(
+          color: Colors.white,
+          size: 50.0,
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -142,7 +173,17 @@ class _LoginState extends State<Login> {
                 height: 50,
                 child: SignInButton(
                   Buttons.Google,
-                  onPressed: () {},
+                  onPressed: () async {
+                    final googleSignIn = Provider.of<GoogleSignInProvider>(
+                      context,
+                      listen: false,
+                    );
+                    final data = await googleSignIn.login();
+                    if (data != null) {
+                      userModelProv.updateUserModel(data);
+                      Navigator.of(context).popAndPushNamed('/home');
+                    }
+                  },
                 ),
               ),
               SizedBox(

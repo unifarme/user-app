@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:unifarme/src/providers/userProvider.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -19,6 +21,7 @@ class MapScreenState extends State<ProfilePage>
 
   @override
   Widget build(BuildContext context) {
+    final userModelProv = Provider.of<UserProvider>(context);
     return new Scaffold(
         body: new Container(
       color: Colors.white,
@@ -43,12 +46,15 @@ class MapScreenState extends State<ProfilePage>
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 25.0),
-                              child: new Text('PROFILE',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0,
-                                      fontFamily: 'sans-serif-light',
-                                      color: Colors.black)),
+                              child: new Text(
+                                'PROFILE',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0,
+                                  fontFamily: 'sans-serif-light',
+                                  color: Colors.black,
+                                ),
+                              ),
                             )
                           ],
                         )),
@@ -66,7 +72,8 @@ class MapScreenState extends State<ProfilePage>
                                   shape: BoxShape.circle,
                                   image: new DecorationImage(
                                     image: new NetworkImage(
-                                        'https://avatars.githubusercontent.com/u/79918614?s=400&u=db4509c7a6b1285f9960d35bfc0dbe99ee559440&v=4'),
+                                      userModelProv.getUserModel.picture,
+                                    ),
                                     fit: BoxFit.cover,
                                   ),
                                 )),
