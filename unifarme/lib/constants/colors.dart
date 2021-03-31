@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+const kPrimaryColor = Color(0xFF52ADA2);
+const kAccentColor = Color(0xFFADDCCA);
+const kGreenColor = Color(0xFFAADE87);
+const kCreamColor = Color(0xFFF7F8F3);
+
 var green = "#AADE87";
 var cream = "#F7F8F3";
 var lightBlueVar = "#ADDCCA";

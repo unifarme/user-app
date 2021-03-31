@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:unifarme/src/screens/homepage/homepage.dart';
 import 'package:unifarme/src/screens/homepage/profile/profile.dart';
 import 'package:unifarme/src/screens/login/login.dart';
+import 'package:unifarme/src/screens/login/login_new.dart';
 import 'package:unifarme/src/screens/login/loginWithCredential.dart';
 import 'package:unifarme/src/screens/login/otpscreen.dart';
 import 'package:unifarme/src/screens/onboard/onboard.dart';
 import 'package:unifarme/src/screens/signup/signup.dart';
+import 'package:unifarme/src/screens/signup/signup_new.dart';
 import 'package:unifarme/src/screens/signup/signupotp.dart';
 import 'package:unifarme/src/screens/signup/signupwithcredentials.dart';
 import 'package:unifarme/src/splashscreen.dart';
+import 'package:unifarme/src/screens/welcome/welcome.dart';
 
 class RouteGenerator {
+  // ignore: missing_return
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final arg = settings.arguments;
 
@@ -23,13 +27,15 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => OnBoarding(),
         );
+      case '/welcome':
+        return MaterialPageRoute(builder: (_) => WelcomePage());
       case '/login':
         return MaterialPageRoute(
-          builder: (_) => Login(),
+          builder: (_) => LoginScreen(),
         );
       case '/signup':
         return MaterialPageRoute(
-          builder: (_) => Signup(),
+          builder: (_) => SignupScreen(),
         );
       case '/otp/screen':
         return MaterialPageRoute(

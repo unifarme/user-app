@@ -57,7 +57,7 @@ class _SignupState extends State<Signup> {
                 height: 10,
               ),
               Text(
-                "Signup",
+                "Sign up",
                 style: logsignStyle,
               ),
               SizedBox(
