@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
+import 'package:unifarme/constants/colors.dart';
+import 'package:unifarme/src/providers/googleSignInProvider.dart';
+import 'package:unifarme/src/providers/userProvider.dart';
 import 'package:unifarme/src/screens/Login/components/background.dart';
 import 'package:unifarme/components/already_have_an_account_acheck.dart';
 import 'package:unifarme/components/rounded_button.dart';
@@ -16,6 +22,22 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    final authGoogleProv = Provider.of<GoogleSignInProvider>(context);
+    final userModelProv = Provider.of<UserProvider>(context, listen: false);
+
+    if (authGoogleProv.getIsSigningIn) {
+      return Container(
+        width: width,
+        height: height,
+        color: HexColor(blueVar),
+        child: SpinKitHourGlass(
+          color: Colors.white,
+          size: 50.0,
+        ),
+      );
+    }
     return Background(
       child: SingleChildScrollView(
         child: Column(
@@ -28,9 +50,10 @@ class Body extends StatelessWidget {
                 child: Text(
                   "Login",
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 45,
-                      fontWeight: FontWeight.bold),
+                    color: Colors.white,
+                    fontSize: 45,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             )),
@@ -56,7 +79,17 @@ class Body extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               SocalIcon(
                 iconSrc: "assets/logos/Google.png",
-                press: () {},
+                press: () async {
+                  final googleSignIn = Provider.of<GoogleSignInProvider>(
+                    context,
+                    listen: false,
+                  );
+                  final data = await googleSignIn.login();
+                  if (data != null) {
+                    userModelProv.updateUserModel(data);
+                    Navigator.of(context).popAndPushNamed('/home');
+                  }
+                },
               ),
               SocalIcon(
                 iconSrc: "assets/logos/Phone.png",

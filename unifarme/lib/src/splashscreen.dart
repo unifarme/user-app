@@ -21,23 +21,25 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.teal.shade300,
-      body: Container(
-        alignment: Alignment.center,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Lottie.asset('assets/Splash.json'),
-            SizedBox(height: 25),
-            Text(
-              "Unifar.me",
-              style: TextStyle(
-                fontSize: 50,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            )
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Lottie.asset('assets/Splash.json'),
+              SizedBox(height: 25),
+              Text(
+                "Unifar.me",
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
