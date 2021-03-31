@@ -4,15 +4,15 @@ import 'package:unifarme/constants/colors.dart';
 
 class RoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
-  const RoundedPasswordField({
-    Key key,
-    this.onChanged,
-  }) : super(key: key);
+  final FormFieldValidator<String> validator;
+  const RoundedPasswordField({Key key, this.onChanged, this.validator})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
-      child: TextField(
+      child: TextFormField(
+        validator: validator,
         obscureText: true,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,

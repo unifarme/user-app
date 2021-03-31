@@ -10,6 +10,7 @@ import 'package:unifarme/src/screens/Auth/phone/otpscreen.dart';
 import 'package:unifarme/src/screens/signup/signup_new.dart';
 import 'package:unifarme/src/screens/signup/signupotp.dart';
 import 'package:unifarme/src/screens/signup/signupwithcredentials.dart';
+import 'package:unifarme/src/screens/signup/verifyEmail.dart';
 import 'package:unifarme/src/splashscreen.dart';
 import 'package:unifarme/src/screens/welcome/welcome.dart';
 import 'package:unifarme/src/screens/Auth/phone/phone_auth_Screen.dart';
@@ -55,6 +56,11 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ProfilePage());
       case '/home':
         return MaterialPageRoute(builder: (_) => HomePage());
+
+      case '/verify/email/cover':
+        return MaterialPageRoute(
+          builder: (_) => SignUpVerifyEmail(),
+        );
 
       // case '/':
       //   return MaterialPageRoute(builder: (_) => Cover());
