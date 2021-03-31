@@ -34,30 +34,17 @@ class _HomePageState extends State<HomePage> {
                 PopupMenuItem(
                   key: Key("logout"),
                   value: "logout",
-                  child: GestureDetector(
-                    child: Text('Logout'),
-                    onTap: () async {},
-                  ),
+                  child: Text('Logout'),
                 ),
                 PopupMenuItem(
                   key: Key("settings"),
                   value: "settings",
-                  child: GestureDetector(
-                    child: Text('Settings'),
-                    onTap: () {
-                      Navigator.of(context).pushNamed("/profile");
-                    },
-                  ),
+                  child: Text('Settings'),
                 ),
                 PopupMenuItem(
                   key: Key("profile"),
                   value: "profile",
-                  child: GestureDetector(
-                    child: Text('Profile'),
-                    onTap: () {
-                      Navigator.of(context).pushNamed("/profile");
-                    },
-                  ),
+                  child: Text('Profile'),
                 ),
               ],
               icon: CircleAvatar(
@@ -71,9 +58,6 @@ class _HomePageState extends State<HomePage> {
                   Navigator.of(context).pushNamed('/settings');
                 } else if (value == "profile") {
                   Navigator.of(context).popAndPushNamed('/profile');
-                  // Navigator.of(context).popUntil(ModalRoute.withName('/login'));
-                  // Navigator.of(context).pushNamedAndRemoveUntil(
-                  //     '\/login', ModalRoute.withName('/option'));
                 } else if (value == "logout") {
                   final googleSignInProvider =
                       Provider.of<GoogleSignInProvider>(context, listen: false);

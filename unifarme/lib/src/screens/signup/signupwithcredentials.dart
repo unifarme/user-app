@@ -4,6 +4,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:loading/indicator/ball_spin_fade_loader_indicator.dart';
 import 'package:loading/loading.dart';
+import 'package:unifarme/src/request/user/user.dart';
 import 'package:unifarme/src/screens/unifarmeLogo.dart';
 import 'package:email_validator/email_validator.dart' as vd;
 
@@ -93,7 +94,7 @@ class _SignupWithCredentialsState extends State<SignupWithCredentials> {
           SizedBox(
             height: 10,
           ),
-          loginField(context),
+          signupField(context),
           SizedBox(
             height: 5,
           ),
@@ -140,7 +141,7 @@ class _SignupWithCredentialsState extends State<SignupWithCredentials> {
           if (vd.EmailValidator.validate(email)) {
             return null;
           } else {
-            return "please enter a valid email";
+            return "Please enter a valid email";
           }
         },
         onSaved: (email) {
@@ -238,7 +239,7 @@ class _SignupWithCredentialsState extends State<SignupWithCredentials> {
     );
   }
 
-  Widget loginField(context) {
+  Widget signupField(context) {
     return SizedBox(
       width: double.infinity,
       height: 50,
@@ -248,13 +249,53 @@ class _SignupWithCredentialsState extends State<SignupWithCredentials> {
             HexColor(green),
           ),
         ),
-        onPressed: () {
+        onPressed: () async {
           setState(() {
             clickedSignup = true;
           });
           if (_formKey.currentState.validate()) {
             _formKey.currentState.save();
-            // print("object");
+            UserRequest userReq = UserRequest(
+              email: email,
+              name: name,
+              password: password,
+            );
+
+            var result = await userReq.signupWithCredentials();
+            if (result == null) {
+              final snackBar = SnackBar(
+                content: Text(
+                  'Please check your intenet Connection',
+                  style: TextStyle(fontSize: 15),
+                  textAlign: TextAlign.center,
+                ),
+                backgroundColor: HexColor(
+                  green,
+                ),
+              );
+
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            } else {
+              if (result["exist"] && !result["registered"]) {
+                // For user account already exists
+                final snackBar = SnackBar(
+                  content: Text(
+                    'User with account already exist',
+                    style: TextStyle(fontSize: 15),
+                    textAlign: TextAlign.center,
+                  ),
+                  backgroundColor: HexColor(
+                    green,
+                  ),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              }
+              if (result["registered"]) {
+                // That means user has been registered successfully
+                Navigator.of(context).popAndPushNamed('/verify/email/cover');
+              }
+            }
+            print(result);
           } else {}
           setState(() {
             clickedSignup = false;

@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hexcolor/hexcolor.dart';
-
-import '../../../constants/colors.dart';
+import 'package:unifarme/constants/colors.dart';
+import 'package:unifarme/src/screens/Auth/phone/components/background.dart';
+import 'package:unifarme/constants/colors.dart';
 
 class OTPScreen extends StatefulWidget {
   @override
@@ -92,7 +93,10 @@ class _OTPScreenState extends State<OTPScreen> {
               children: <Widget>[
                 Text(
                   'Verification',
-                  style: bigHeadingStyle,
+                  style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),
                 ),
                 heightSpace,
                 Text(

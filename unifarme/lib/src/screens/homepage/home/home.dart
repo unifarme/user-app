@@ -40,34 +40,6 @@ class _HomeState extends State<Home> {
           FarmsNearBy(),
         ],
       ),
-      // child: Column(
-      //   children: [
-      //     SearchInput(),
-      //     SingleChildScrollView(
-      //       child: Container(
-      //         child: Column(
-      //           crossAxisAlignment: CrossAxisAlignment.start,
-      //           children: [
-      //             SizedBox(
-      //               height: 10,
-      //             ),
-      //             // Text("Adver"),
-      //             AdvertSliderList(),
-      //             CategorySlider(),
-      //             SizedBox(
-      //               height: 10,
-      //             ),
-      //             Text(
-      //               "Farms Nearby",
-      //               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      //             ),
-      //             FarmsNearBy(),
-      //           ],
-      //         ),
-      //       ),
-      //     )
-      //   ],
-      // ),
     );
   }
 }
