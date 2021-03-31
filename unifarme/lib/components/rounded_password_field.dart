@@ -5,7 +5,14 @@ import 'package:unifarme/constants/colors.dart';
 class RoundedPasswordField extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final FormFieldValidator<String> validator;
-  const RoundedPasswordField({Key key, this.onChanged, this.validator})
+  final bool obscureText;
+  final Function changeVisibility;
+  const RoundedPasswordField(
+      {Key key,
+      this.onChanged,
+      this.validator,
+      this.obscureText,
+      this.changeVisibility})
       : super(key: key);
 
   @override
@@ -13,7 +20,7 @@ class RoundedPasswordField extends StatelessWidget {
     return TextFieldContainer(
       child: TextFormField(
         validator: validator,
-        obscureText: true,
+        obscureText: obscureText,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,
         decoration: InputDecoration(
@@ -22,9 +29,12 @@ class RoundedPasswordField extends StatelessWidget {
             Icons.lock,
             color: kPrimaryColor,
           ),
-          suffixIcon: Icon(
-            Icons.visibility,
-            color: kPrimaryColor,
+          suffixIcon: GestureDetector(
+            onTap: changeVisibility,
+            child: Icon(
+              Icons.visibility,
+              color: kPrimaryColor,
+            ),
           ),
           border: InputBorder.none,
         ),

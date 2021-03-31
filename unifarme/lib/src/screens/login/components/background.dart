@@ -11,12 +11,15 @@ class Background extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      // padding: EdgeInsets.all(10),
       width: double.infinity,
       height: size.height,
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/background.png'),
-              fit: BoxFit.fill)),
+        image: DecorationImage(
+          image: AssetImage('assets/images/background.png'),
+          fit: BoxFit.fill,
+        ),
+      ),
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[

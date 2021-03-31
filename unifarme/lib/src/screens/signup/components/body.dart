@@ -30,6 +30,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool obscuretext = true;
   bool clickedSignup = false;
   String email = "";
   String password = "";
@@ -114,6 +115,12 @@ class _BodyState extends State<Body> {
                     password = value;
                   },
                   validator: passwordValidator,
+                  obscureText: obscuretext,
+                  changeVisibility: () {
+                    setState(() {
+                      obscuretext = !obscuretext;
+                    });
+                  },
                 ),
                 RoundedButton(
                   text: "SIGN UP",
