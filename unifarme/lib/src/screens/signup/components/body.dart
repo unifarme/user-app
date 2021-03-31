@@ -29,12 +29,12 @@ class Body extends StatelessWidget {
                   "Sign up",
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 45,
+                      fontSize: 25,
                       fontWeight: FontWeight.bold),
                 ),
               ),
             )),
-            SizedBox(height: size.height * 0.03),
+            SizedBox(height: size.height * 0.02),
             RoundedInputField(
               hintText: "Your Name",
               onChanged: (value) {},
@@ -50,7 +50,7 @@ class Body extends StatelessWidget {
               text: "SIGN UP",
               press: () {},
             ),
-            SizedBox(height: size.height * 0.03),
+            SizedBox(height: size.height * 0.02),
             AlreadyHaveAnAccountCheck(
               login: false,
               press: () {
@@ -65,7 +65,9 @@ class Body extends StatelessWidget {
               ),
               SocalIcon(
                 iconSrc: "assets/logos/Phone.png",
-                press: () {},
+                press: () {
+                  Navigator.of(context).pushNamed("/otp/screen");
+                },
               )
             ])
           ],

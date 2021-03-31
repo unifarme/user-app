@@ -1,17 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:unifarme/src/screens/Login/components/background.dart';
-import 'package:unifarme/components/already_have_an_account_acheck.dart';
+import 'package:international_phone_input/international_phone_input.dart';
+import 'package:unifarme/constants/colors.dart';
 import 'package:unifarme/components/rounded_button.dart';
 import 'package:unifarme/components/rounded_input_field.dart';
 import 'package:unifarme/components/rounded_password_field.dart';
-import 'package:unifarme/src/screens/Login/components/or_divider.dart';
-import 'package:unifarme/src/screens/Login/components/social_icon.dart';
 import 'package:unifarme/src/screens/unifarmeLogo.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({
     Key key,
   }) : super(key: key);
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  String phoneNumber;
+  String phoneIsoCode;
+
+  void onPhoneNumberChange(
+      String number, String internationalizedPhoneNumber, String isoCode) {
+    setState(() {
+      phoneNumber = number;
+      phoneIsoCode = isoCode;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +40,7 @@ class Body extends StatelessWidget {
                 child: Container(
               child: Center(
                 child: Text(
-                  "Login",
+                  "Phone Login",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 40,
@@ -35,36 +49,34 @@ class Body extends StatelessWidget {
               ),
             )),
             SizedBox(height: size.height * 0.03),
-            RoundedInputField(
-              hintText: "Your Email",
-              onChanged: (value) {},
+            SizedBox(
+              height: 20,
             ),
-            RoundedPasswordField(
-              onChanged: (value) {},
+            InternationalPhoneInput(
+              onPhoneNumberChange: onPhoneNumberChange,
+              initialPhoneNumber: phoneNumber,
+              initialSelection: phoneIsoCode,
+              enabledCountries: ['+91'],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              thickness: 2,
+            ),
+            SizedBox(
+              height: 10,
             ),
             RoundedButton(
-              text: "LOGIN",
-              press: () {},
-            ),
-            SizedBox(height: size.height * 0.03),
-            AlreadyHaveAnAccountCheck(
+              text: "GET OTP",
               press: () {
-                Navigator.of(context).pushNamed("/signup");
+                Navigator.of(context).pushNamed("/otp/screen/signup");
               },
             ),
-            OrDivider(),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              SocalIcon(
-                iconSrc: "assets/logos/Google.png",
-                press: () {},
-              ),
-              SocalIcon(
-                iconSrc: "assets/logos/Phone.png",
-                press: () {
-                  Navigator.of(context).pushNamed("/otp/screen");
-                },
-              )
-            ])
+            SizedBox(height: size.height * 0.03),
           ],
         ),
       ),
