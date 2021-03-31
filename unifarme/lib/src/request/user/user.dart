@@ -17,7 +17,7 @@ class UserRequest {
   Future loginUser() async {
     try {
       String route = env == "dev" ? urls[0] : urls[1];
-      route = route + "/user/login/with/credential";
+      route = route + "/user/login/with/email/credential";
       Uri uri = Uri.parse(route);
       var data = await http.post(
         uri,

@@ -9,8 +9,8 @@ class UnifarmeLogo extends StatelessWidget {
           child: Center(
             child: Image.asset(
               "assets/logos/logo.png",
-              width: 150.0,
-              height: 150.0,
+              width: 135.0,
+              height: 135.0,
             ),
           ),
         ),

@@ -17,18 +17,18 @@ class UserModel {
 
   // When logging in
   UserModel.fromJson(parsedJson) {
-    name = parsedJson["name"] ? parsedJson["name"] : "";
-    email = parsedJson["email"] ? parsedJson["email"] : "";
-    country = parsedJson["country"] ? parsedJson["country"] : "";
-    state = parsedJson["state"] ? parsedJson["state"] : "";
-    city = parsedJson["city"] ? parsedJson["city"] : "";
-    address = parsedJson["address"] ? parsedJson["address"] : "";
-    mobile_no = parsedJson["mobile_no"] ? parsedJson["mobile_no"] : "";
-    picture = parsedJson["picture"] ? parsedJson["picture"] : "";
-    logged = parsedJson["logged"] ? parsedJson["logged"] : false;
-    auth = parsedJson["auth-token"] ? parsedJson["auth-token"] : "";
-    isFarmer = parsedJson["isFarmer"] ? parsedJson["isFarmer"] : false;
-    googleId = parsedJson["googleId"] ? parsedJson["googleId"] : "";
+    name = parsedJson["name"] != null ? parsedJson["name"] : "";
+    email = parsedJson["email"] != null ? parsedJson["email"] : "";
+    country = parsedJson["country"] != null ? parsedJson["country"] : "";
+    state = parsedJson["state"] != null ? parsedJson["state"] : "";
+    city = parsedJson["city"] != null ? parsedJson["city"] : "";
+    address = parsedJson["address"] != null ? parsedJson["address"] : "";
+    mobile_no = parsedJson["mobile_no"] != null ? parsedJson["mobile_no"] : "";
+    picture = parsedJson["picture"] != null ? parsedJson["picture"] : "";
+    logged = parsedJson["logged"] != null ? parsedJson["logged"] : false;
+    auth = parsedJson["auth-token"] != null ? parsedJson["auth-token"] : "";
+    isFarmer = parsedJson["isFarmer"] != null ? parsedJson["isFarmer"] : false;
+    googleId = parsedJson["googleId"] != null ? parsedJson["googleId"] : "";
   }
 
   // When initializing providers
