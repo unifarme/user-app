@@ -44,7 +44,11 @@ class _OnBoardingState extends State<OnBoarding> {
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [const Color(0xff3C8CE7), const Color(0xff00EAFF)])),
+        colors: [
+          const Color(0xff3C8CE7),
+          const Color(0xff00EAFF),
+        ],
+      )),
       child: Scaffold(
         backgroundColor: Colors.white,
         body: WillPopScope(
