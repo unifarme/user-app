@@ -20,39 +20,41 @@ class _FarmerState extends State<Farmer> {
     final userModelProv = Provider.of<UserProvider>(context);
     return Container(
       width: width,
-      height: height,
+      // height: height,
       child: userModelProv.getUserModel.isFarmer
           ? FarmerPage()
           : Container(
               width: width,
               height: height,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Become Farmer",
-                        style: TextStyle(
-                          fontSize: 20,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Become Farmer",
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
                         ),
-                      ),
-                      Switch(
-                        value: switchButton,
-                        onChanged: (value) async {
-                          setState(() {
-                            switchButton = value;
-                          });
-                        },
-                        activeTrackColor: HexColor(lightBlueVar),
-                        activeColor: HexColor(blueVar),
-                      )
-                    ],
-                  ),
-                  switchButton ? FarmerForm() : Text(""),
-                ],
+                        Switch(
+                          value: switchButton,
+                          onChanged: (value) async {
+                            setState(() {
+                              switchButton = value;
+                            });
+                          },
+                          activeTrackColor: HexColor(lightBlueVar),
+                          activeColor: HexColor(blueVar),
+                        )
+                      ],
+                    ),
+                    switchButton ? FarmerForm() : Text(""),
+                  ],
+                ),
               ),
             ),
     );
