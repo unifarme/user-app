@@ -9,9 +9,11 @@ class UserRequest {
   String email;
   String password;
   String mobile_no;
+  String otp;
   UserRequest({this.email, this.name, this.password});
   UserRequest.login({this.email, this.password});
   UserRequest.mobile_number({this.mobile_no});
+  UserRequest.otp({this.otp});
 
   // Login Methods
   Future loginUser() async {
@@ -95,6 +97,25 @@ class UserRequest {
         body: json.encode({
           "mobile_no": mobile_no,
         }),
+        headers: {
+          HttpHeaders.contentTypeHeader: "application/json",
+        },
+      );
+      return json.decode(data.body);
+    } catch (err) {
+      print(err);
+      return null;
+    }
+  }
+
+  // Verification
+  Future verifyOpt() async {
+    try {
+      String route = env == "dev" ? urls[0] : urls[1];
+      route = route + "/user/verify/login/otp/" + otp;
+      Uri uri = Uri.parse(route);
+      var data = await http.post(
+        uri,
         headers: {
           HttpHeaders.contentTypeHeader: "application/json",
         },

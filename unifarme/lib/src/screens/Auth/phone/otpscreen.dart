@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 import 'package:unifarme/constants/colors.dart';
-import 'package:unifarme/src/screens/Auth/phone/components/background.dart';
-import 'package:unifarme/constants/colors.dart';
+import 'package:unifarme/src/models/user.dart';
+import 'package:unifarme/src/providers/userProvider.dart';
+import 'package:unifarme/src/request/user/user.dart';
 
 class OTPScreen extends StatefulWidget {
   @override
@@ -25,8 +27,8 @@ class _OTPScreenState extends State<OTPScreen> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
-    loadingDialog() {
+    final userModelProv = Provider.of<UserProvider>(context, listen: false);
+    loadingDialog() async {
       showDialog(
         context: context,
         barrierDismissible: false,
@@ -61,12 +63,46 @@ class _OTPScreenState extends State<OTPScreen> {
           );
         },
       );
+      try {
+        String otp = firstController.text +
+            secondController.text +
+            thirdController.text +
+            fourthController.text +
+            fifthController.text;
+        print(otp);
+        UserRequest userReq = UserRequest.otp(otp: otp);
+        var data = await userReq.verifyOpt();
+        print(data);
+        if (!data["exist"]) {
+          final snackBar = SnackBar(
+            content: Text(
+              'Invalid OTP login PIN',
+              style: TextStyle(fontSize: 15),
+              textAlign: TextAlign.center,
+            ),
+            backgroundColor: HexColor(
+              green,
+            ),
+          );
+
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        } else {
+          UserModel userMod = UserModel.fromJson(data);
+          userModelProv.updateUserModel(userMod);
+          Navigator.of(context).pushNamed("/home");
+        }
+
+        print(data);
+      } catch (err) {
+        print(err);
+      }
       // Timer(
-      //     Duration(seconds: 3),
-      //     () => Navigator.push(
-      //           context,
-      //           MaterialPageRoute(builder: (context) => Home()),
-      //         ));
+      //   Duration(seconds: 3),
+      //   () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (context) => Home()),
+      //   ),
+      // );
     }
 
     return Scaffold(
@@ -259,7 +295,7 @@ class _OTPScreenState extends State<OTPScreen> {
                           border: InputBorder.none,
                         ),
                         onChanged: (v) {
-                          // loadingDialog();
+                          loadingDialog();
                         },
                       ),
                     ),
