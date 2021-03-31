@@ -50,6 +50,8 @@ dependencies:
   # flutter_zoom_drawer: ^2.0.0
   badges: ^1.2.0
   lottie: ^1.0.1
+  file_picker: ^3.0.0
+  http: ^0.13.1
 
 dev_dependencies:
   flutter_launcher_icons: "0.9.0"

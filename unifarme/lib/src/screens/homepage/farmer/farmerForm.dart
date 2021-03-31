@@ -1,4 +1,4 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 import 'dart:io';
 import 'package:email_validator/email_validator.dart' as vd;
 import 'package:flutter/material.dart';
@@ -20,6 +20,7 @@ class FarmerForm extends StatefulWidget {
 class _FarmerFormState extends State<FarmerForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Position _currentPosition;
+  String dropdownValue = 'Voters ID';
 
   String name;
   String email;
@@ -29,10 +30,11 @@ class _FarmerFormState extends State<FarmerForm> {
   String state;
   String city;
   String address;
-  Map<String, Float> location;
+  Map<String, dynamic> location;
   bool logged;
   String auth;
   bool isFarmer;
+  String id_type;
 
   String phoneIsoCode;
 
@@ -59,18 +61,17 @@ class _FarmerFormState extends State<FarmerForm> {
     });
   }
 
-  _getCurrentLocation() {
-    Geolocator.getCurrentPosition(
-            desiredAccuracy: LocationAccuracy.best,
-            forceAndroidLocationManager: true)
-        .then((Position position) {
-      print(position);
+  _getCurrentLocation() async {
+    try {
+      var info = await Geolocator.requestPermission();
+      Position position = await Geolocator.getCurrentPosition();
+
       setState(() {
         _currentPosition = position;
       });
-    }).catchError((e) {
-      print(e);
-    });
+    } catch (err) {
+      print(err);
+    }
   }
 
   @override
@@ -223,7 +224,33 @@ class _FarmerFormState extends State<FarmerForm> {
           SizedBox(
             height: 5,
           ),
-          getLocation()
+          getLocation(),
+          SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
+              Text(
+                "ID Type",
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              selectIdType()
+            ],
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          idFilePicker(),
+          SizedBox(
+            height: 5,
+          ),
+          submitButton(),
+          SizedBox(
+            height: 20,
+          ),
         ],
       ),
     );
@@ -240,11 +267,11 @@ class _FarmerFormState extends State<FarmerForm> {
           hintText: "Suraj",
         ),
         validator: (email) {
-          // if (vd.EmailValidator.validate(email)) {
-          //   return null;
-          // } else {
-          //   return "please enter a valid email";
-          // }
+          if (vd.EmailValidator.validate(email)) {
+            return null;
+          } else {
+            return "please enter a valid email";
+          }
         },
         onSaved: (name) {
           this.name = name;
@@ -287,11 +314,10 @@ class _FarmerFormState extends State<FarmerForm> {
           hintText: "Mataheko Jonkrobi",
         ),
         validator: (address) {
-          // if (vd.EmailValidator.validate(email)) {
-          //   return null;
-          // } else {
-          //   return "please enter a valid email";
-          // }
+          if (address.length == 0) {
+            return "Please enter an addres";
+          }
+          return null;
         },
         onSaved: (email) {
           this.email = email;
@@ -307,10 +333,121 @@ class _FarmerFormState extends State<FarmerForm> {
           HexColor(blueVar),
         ),
       ),
-      child: Text("Get location"),
+      child: Row(
+        children: [
+          Icon(
+            Icons.location_pin,
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          Text(
+            "Get location",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          )
+        ],
+      ),
       onPressed: () {
         _getCurrentLocation();
       },
+    );
+  }
+
+  Widget selectIdType() {
+    return DropdownButton<String>(
+      value: null,
+      icon: const Icon(Icons.arrow_downward),
+      iconSize: 24,
+      elevation: 16,
+      style: const TextStyle(
+        color: Colors.deepPurple,
+      ),
+      underline: Container(
+        height: 2,
+        color: HexColor(blueVar),
+      ),
+      onChanged: (String newValue) {
+        if (newValue == "Voters ID") {
+          setState(() {
+            dropdownValue = newValue;
+            id_type = "VI";
+          });
+        } else if (newValue == "Aadhaar Card") {
+          setState(() {
+            dropdownValue = newValue;
+            id_type = "AC";
+          });
+        } else if (newValue == "Pan Card") {
+          setState(() {
+            dropdownValue = newValue;
+            id_type = "PC";
+          });
+        }
+      },
+      items: <String>['Voters ID', 'Aadhaar Card', 'Pan Card']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(
+            value,
+            style: TextStyle(
+              color: HexColor(blueVar),
+            ),
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget idFilePicker() {
+    return ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(
+          HexColor(blueVar),
+        ),
+      ),
+      onPressed: () {},
+      child: Row(
+        children: [
+          Icon(
+            Icons.file_upload,
+            size: 20,
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          Text(
+            "Select ID",
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget submitButton() {
+    return ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(
+          HexColor(blueVar),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "Submit",
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        ],
+      ),
+      onPressed: () {},
     );
   }
 }

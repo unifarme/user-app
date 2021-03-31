@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:international_phone_input/international_phone_input.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +30,22 @@ class _SignupState extends State<Signup> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    final authGoogleProv = Provider.of<GoogleSignInProvider>(context);
+    final userModelProv = Provider.of<UserProvider>(context, listen: false);
+
+    if (authGoogleProv.getIsSigningIn) {
+      return Container(
+        width: width,
+        height: height,
+        color: HexColor(blueVar),
+        child: SpinKitHourGlass(
+          color: Colors.white,
+          size: 50.0,
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -101,6 +118,7 @@ class _SignupState extends State<Signup> {
                     final data = await googleSignIn.login();
                     if (data != null) {
                       userModelProv.updateUserModel(data);
+
                       Navigator.of(context).popAndPushNamed('/home');
                     }
                   },
