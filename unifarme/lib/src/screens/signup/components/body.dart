@@ -200,7 +200,9 @@ class _BodyState extends State<Body> {
                     ),
                     SocalIcon(
                       iconSrc: "assets/logos/Phone.png",
-                      press: () {},
+                      press: () {
+                        Navigator.of(context).pushNamed("/otp/screen");
+                      },
                     )
                   ],
                 )
