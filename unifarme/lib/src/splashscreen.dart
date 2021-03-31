@@ -29,11 +29,14 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Lottie.asset('assets/Splash.json'),
             SizedBox(height: 25),
-            Text("Unifar.me",
-                style: TextStyle(
-                    fontSize: 50,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold))
+            Text(
+              "Unifar.me",
+              style: TextStyle(
+                fontSize: 50,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            )
           ],
         ),
       ),
