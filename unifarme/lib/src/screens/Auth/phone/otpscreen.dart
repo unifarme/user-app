@@ -129,7 +129,10 @@ class _OTPScreenState extends State<OTPScreen> {
               children: <Widget>[
                 Text(
                   'Verification',
-                  style: bigHeadingStyle,
+                  style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold),
                 ),
                 heightSpace,
                 Text(

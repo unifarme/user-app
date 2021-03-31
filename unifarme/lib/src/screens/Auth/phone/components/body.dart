@@ -7,8 +7,6 @@ import 'package:unifarme/src/screens/Login/components/background.dart';
 import 'package:international_phone_input/international_phone_input.dart';
 import 'package:unifarme/constants/colors.dart';
 import 'package:unifarme/components/rounded_button.dart';
-import 'package:unifarme/components/rounded_input_field.dart';
-import 'package:unifarme/components/rounded_password_field.dart';
 import 'package:unifarme/src/screens/unifarmeLogo.dart';
 
 class Body extends StatefulWidget {
