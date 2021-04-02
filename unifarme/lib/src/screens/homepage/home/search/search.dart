@@ -10,12 +10,15 @@ class SearchInput extends StatefulWidget {
 }
 
 class _SearchInputState extends State<SearchInput> {
-  final _focusNode = FocusNode();
+  FocusNode _focusNode;
 
   @override
   void initState() {
     super.initState();
+    _focusNode = FocusNode();
+
     _focusNode.addListener(() {
+      _focusNode.unfocus();
       Navigator.of(context).pushNamed('/product/search');
     });
   }
@@ -37,15 +40,17 @@ class _SearchInputState extends State<SearchInput> {
                   ),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        offset: const Offset(0, 2),
-                        blurRadius: 8.0),
+                      color: Colors.grey.withOpacity(0.2),
+                      offset: const Offset(0, 2),
+                      blurRadius: 8.0,
+                    ),
                   ],
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
                       left: 16, right: 16, top: 4, bottom: 4),
                   child: TextField(
+                    autofocus: false,
                     focusNode: _focusNode,
                     onChanged: (String txt) {},
                     style: const TextStyle(

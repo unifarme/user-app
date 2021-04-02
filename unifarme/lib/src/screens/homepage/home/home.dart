@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
       height: MediaQuery.of(context).size.height,
       child: ListView(
         children: [
-          SearchInput(),
+          // SearchInput(),
           SizedBox(
             height: 10,
           ),

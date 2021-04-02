@@ -70,6 +70,15 @@ class _HomePageState extends State<HomePage> {
                 }
               },
             ),
+            IconButton(
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/product/search');
+              },
+            ),
 
             IconButton(
               icon: Badge(
