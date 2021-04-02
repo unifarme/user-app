@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:unifarme/src/screens/homepage/homepage.dart';
 import 'package:unifarme/src/screens/homepage/profile/profile.dart';
+import 'package:unifarme/src/screens/homepage/searchpage/filterscreen.dart';
+import 'package:unifarme/src/screens/homepage/searchpage/search.dart';
 import 'package:unifarme/src/screens/login/login.dart';
 import 'package:unifarme/src/screens/login/login_new.dart';
 import 'package:unifarme/src/screens/login/loginWithCredential.dart';
@@ -60,6 +62,15 @@ class RouteGenerator {
       case '/verify/email/cover':
         return MaterialPageRoute(
           builder: (_) => SignUpVerifyEmail(),
+        );
+      case '/product/search':
+        return MaterialPageRoute(
+          builder: (_) => SearchProduct(),
+        );
+
+      case '/search/filters':
+        return MaterialPageRoute(
+          builder: (_) => FiltersScreen(),
         );
 
       // case '/':

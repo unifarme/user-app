@@ -10,7 +10,7 @@ class UserModel {
   String state;
   String city;
   String address;
-  Map<String, Float> location;
+  Map<String, double> location;
   bool logged;
   String auth;
   bool isFarmer;
