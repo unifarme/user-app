@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unifarme/src/screens/homepage/homepage.dart';
+import 'package:unifarme/src/screens/homepage/item/item_detail.dart';
 import 'package:unifarme/src/screens/homepage/profile/profile.dart';
 import 'package:unifarme/src/screens/homepage/searchpage/filterscreen.dart';
 import 'package:unifarme/src/screens/homepage/searchpage/search.dart';
@@ -71,6 +72,11 @@ class RouteGenerator {
       case '/search/filters':
         return MaterialPageRoute(
           builder: (_) => FiltersScreen(),
+        );
+
+      case '/selected/product':
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailsScreen(),
         );
 
       // case '/':

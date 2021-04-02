@@ -85,7 +85,7 @@ class _SearchProductState extends State<SearchProduct>
                           animationController.forward();
                           return ProductCard(
                             callback: () {},
-                            hotelData: products[index],
+                            productData: products[index],
                             animation: animation,
                             animationController: animationController,
                           );

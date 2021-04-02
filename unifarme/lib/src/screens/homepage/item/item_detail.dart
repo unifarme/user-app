@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 import 'package:unifarme/constants/colors.dart';
+import 'package:unifarme/src/models/product.dart';
+import 'package:unifarme/src/providers/selectedItem.dart';
 
 import 'package:unifarme/src/screens/homepage/item/counter.dart';
+import 'package:unifarme/src/screens/homepage/searchpage/productList.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   final int id;
 
   const ProductDetailsScreen({Key key, this.id}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final selectedProd = Provider.of<SelectedItemProvider>(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: HexColor(blueVar),
@@ -32,24 +38,27 @@ class ProductDetailsScreen extends StatelessWidget {
                           onPressed: () => Navigator.pop(context),
                         ),
                         IconButton(
-                            icon: Icon(
-                              Icons.shopping_basket,
-                            ),
-                            onPressed: () =>
-                                Navigator.pushNamed(context, 'orderscreen')),
+                          icon: Icon(
+                            Icons.shopping_cart,
+                          ),
+                          onPressed: () {
+                            // Navigator.pushNamed(context, 'orderscreen'),
+                          },
+                        ),
                       ],
                     ),
                   ),
-                  Positioned.fill(
+                  Positioned(
                     child: Container(
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: Hero(
                         tag: '20',
                         child: Image.network(
-                          "https://i.pinimg.com/originals/5a/9d/41/5a9d41f4c961a7fa67f1464feda9a03a.jpg",
+                          selectedProd.getProduct.product_pic,
                           // "${productsList[id].img}",
-                          width: MediaQuery.of(context).size.width * .7,
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          height: double.infinity * 0.7,
                         ),
                       ),
                     ),
@@ -75,14 +84,14 @@ class ProductDetailsScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          "Fufu",
+                          selectedProd.getProduct.product_name,
                           // "${productsList[id].title}",
-                          style: Theme.of(context).textTheme.display1,
+                          style: Theme.of(context).textTheme.headline4,
                         ),
                         IconButton(
                           icon: Icon(
                             Icons.favorite_border,
-                            color: Colors.red,
+                            color: Colors.orange,
                           ),
                           onPressed: () {},
                         ),
@@ -90,26 +99,33 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     Text(
                       "Description",
-                      style: Theme.of(context).textTheme.title,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     Text(
-                        "vhjjfd dfhjdjf djfhdjd fjdhfd jdhfjdf djfhdjfd fdjhfjd fjdhfjdfdf dfhdfjd djfhjdf djfhdjfd fjdhfjdf djfhdfjdffd"
-                        // "${productsList[id].description}",
-                        ),
+                      """You will rarely want to do that unless you’re creating a widget similar to Scaffold. That’s where widgets such as IntrinsincHeight comes in handy. These widgets are able to solve the paradox, and therefore have a valid layout.
+                      """,
+                      // "${productsList[id].description}",
+                      style: TextStyle(color: Colors.grey),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Counter(),
                         Text(
-                          "200",
+                          "₹ ${selectedProd.getProduct.price}",
                           // "${productsList[id].price}",
-                          style: Theme.of(context).textTheme.title,
+                          style: Theme.of(context).textTheme.headline6,
                         ),
                       ],
                     ),
                     Container(
                       width: double.infinity,
-                      child: RaisedButton(
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                            HexColor(blueVar),
+                          ),
+                        ),
                         child: Text(
                           "Add To Cart",
                           style: Theme.of(context).textTheme.button.apply(
@@ -117,10 +133,10 @@ class ProductDetailsScreen extends StatelessWidget {
                               ),
                         ),
                         onPressed: () {},
-                        color: Colors.green,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+                        // color: Colors.green,
+                        // shape: RoundedRectangleBorder(
+                        //   borderRadius: BorderRadius.circular(5.0),
+                        // ),
                       ),
                     )
                   ],
