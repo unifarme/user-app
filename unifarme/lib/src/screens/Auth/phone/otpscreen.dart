@@ -364,4 +364,20 @@ class _OTPScreenState extends State<OTPScreen> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    firstController.dispose();
+    secondController.dispose();
+    thirdController.dispose();
+    fourthController.dispose();
+    fifthController.dispose();
+
+    secondController.dispose();
+    thirdFocusNode.dispose();
+    fourthFocusNode.dispose();
+    fifthFocusNode.dispose();
+    super.dispose();
+  }
 }

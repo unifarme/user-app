@@ -192,7 +192,8 @@ class _BodyState extends State<Body> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     SocalIcon(
-                      iconSrc: "assets/logos/Google.png",
+                      iconSrc:
+                          "https://firebasestorage.googleapis.com/v0/b/unifar-me.appspot.com/o/logos%2FGoogle.png?alt=media&token=64bb5d75-4f52-4a26-a319-d8c07ef9ff0a",
                       press: () async {
                         final googleSignIn = Provider.of<GoogleSignInProvider>(
                           context,
@@ -206,7 +207,8 @@ class _BodyState extends State<Body> {
                       },
                     ),
                     SocalIcon(
-                      iconSrc: "assets/logos/Phone.png",
+                      iconSrc:
+                          "https://firebasestorage.googleapis.com/v0/b/unifar-me.appspot.com/o/logos%2FPhone.png?alt=media&token=139c5bb3-d3b4-44c4-a4e3-49f1ef78fe5e",
                       press: () {
                         Navigator.of(context).pushNamed("/otp/screen");
                       },
