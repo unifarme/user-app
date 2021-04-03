@@ -3,7 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:unifarme/src/providers/googleSignInProvider.dart';
 import 'package:unifarme/src/providers/navBottom.dart';
+import 'package:unifarme/src/providers/news.dart';
 import 'package:unifarme/src/providers/selectedItem.dart';
+import 'package:unifarme/src/providers/selectedNews.dart';
 import 'package:unifarme/src/providers/userProvider.dart';
 import 'package:unifarme/src/routes/routes.dart';
 import 'package:unifarme/src/splashscreen.dart';
@@ -24,6 +26,12 @@ class App extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => SelectedItemProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => NewsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SelectedNewProvider(),
         ),
       ],
       child: MaterialApp(

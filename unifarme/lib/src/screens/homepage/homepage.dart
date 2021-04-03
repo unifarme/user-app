@@ -11,6 +11,7 @@ import 'package:unifarme/src/screens/homepage/buttomNav.dart';
 import 'package:unifarme/src/screens/homepage/farmer/farmer.dart';
 import 'package:unifarme/src/screens/homepage/friends/friend.dart';
 import 'package:unifarme/src/screens/homepage/home/home.dart';
+import 'package:unifarme/src/screens/homepage/news/newsPage.dart';
 import 'package:unifarme/src/screens/homepage/setting/settings.dart';
 import 'package:unifarme/src/screens/homepage/userDrawer.dart';
 
@@ -115,7 +116,7 @@ class _HomePageState extends State<HomePage> {
         // body: Text("Hello"));
         body: [
           Home(),
-          Text("News"),
+          NewsPage(),
           Farmer(),
           Friend(),
           Settings(),
