@@ -64,7 +64,7 @@ class GoogleSignInProvider extends ChangeNotifier {
           googleId: user.id,
           picture: user.photoUrl,
           logged: true,
-          isFarmer: false,
+          isFarmer: true,
         );
       } on FirebaseAuthException catch (e) {
         print(e);

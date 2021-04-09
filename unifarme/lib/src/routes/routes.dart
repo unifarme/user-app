@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unifarme/src/screens/homepage/farmer/farmerProfile/dashboard.dart';
 import 'package:unifarme/src/screens/homepage/homepage.dart';
 import 'package:unifarme/src/screens/homepage/item/item_detail.dart';
 import 'package:unifarme/src/screens/homepage/news/selectedPage.dart';
@@ -83,6 +84,10 @@ class RouteGenerator {
       case '/selected/news':
         return MaterialPageRoute(
           builder: (_) => NewsActual(),
+        );
+      case '/dashboard':
+        return MaterialPageRoute(
+          builder: (_) => FarmersDashboard(),
         );
 
       // case '/':
