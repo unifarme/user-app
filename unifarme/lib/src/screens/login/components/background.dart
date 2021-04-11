@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:unifarme/components/back_icon.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
@@ -32,6 +33,17 @@ class Background extends StatelessWidget {
               imageUrl:
                   "https://firebasestorage.googleapis.com/v0/b/unifar-me.appspot.com/o/images%2Ftop.png?alt=media&token=e698d4ff-9c79-4e83-80b3-3f724df74379",
               width: size.width * 0.35,
+            ),
+          ),
+          Positioned(
+            top: 25,
+            left: 15,
+            child: BackIcon(
+              iconSrc:
+                  "https://firebasestorage.googleapis.com/v0/b/unifar-me.appspot.com/o/logos%2Fback_black.png?alt=media&token=86392194-5794-4143-b2c2-e651301bc338",
+              press: () {
+                Navigator.pop(context, false);
+              },
             ),
           ),
           Positioned(

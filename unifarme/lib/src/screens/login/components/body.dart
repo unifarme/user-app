@@ -16,6 +16,7 @@ import 'package:unifarme/components/rounded_input_field.dart';
 import 'package:unifarme/components/rounded_password_field.dart';
 import 'package:unifarme/src/screens/Login/components/or_divider.dart';
 import 'package:unifarme/src/screens/Login/components/social_icon.dart';
+import 'package:unifarme/components/back_icon.dart';
 import 'package:unifarme/src/screens/unifarmeLogo.dart';
 import 'package:email_validator/email_validator.dart' as vd;
 
@@ -202,9 +203,9 @@ class _BodyState extends State<Body> {
                       press: () {
                         Navigator.of(context).pushNamed("/otp/screen");
                       },
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),

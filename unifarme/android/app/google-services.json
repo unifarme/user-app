@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "785048112986-9pb9g2kvd65m4j3pacbivbji6plgadih.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "unifar.me",
+            "certificate_hash": "d80a4f2697682cdb1d283fe843c50fe10933dd25"
+          }
+        },
+        {
+          "client_id": "785048112986-h113jn9uu8g00f1lsedgscgv02voj408.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "unifar.me",
+            "certificate_hash": "9b2a18cf8fe1152dbb32f28bfb3749460026f6bf"
+          }
+        },
+        {
           "client_id": "785048112986-j8np07n23b152gks4p1lsfoeggvngl8o.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +45,13 @@
             {
               "client_id": "785048112986-j8np07n23b152gks4p1lsfoeggvngl8o.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "785048112986-rpqk90cur01atr6u64sk21u29srotkah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "unifar.me"
+              }
             }
           ]
         }
