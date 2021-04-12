@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unifarme/src/screens/homepage/farmer/farmerProfile/dashboard.dart';
 
 class Settings extends StatefulWidget {
   @override
@@ -11,7 +12,7 @@ class _SettingsState extends State<Settings> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      child: Text("Settings"),
+      child: FarmersDashboard(),
     );
   }
 }

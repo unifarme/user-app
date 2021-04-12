@@ -1,4 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:unifarme/src/providers/userProvider.dart';
 
 class Friend extends StatefulWidget {
   @override
@@ -49,15 +52,17 @@ class _FriendState extends State<Friend>
                 ),
               );
             },
-            itemCount: 10,
+            itemCount: 1,
             itemBuilder: (context, index) {
+              final userProv = Provider.of<UserProvider>(context);
               return ListTile(
                 leading: CircleAvatar(
                   backgroundColor: Colors.teal,
+                  backgroundImage: NetworkImage(userProv.getUserModel.picture),
                   radius: 25,
                 ),
                 title: Text(
-                  'Name',
+                  userProv.getUserModel.name,
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.teal),
                 ),
@@ -93,15 +98,17 @@ class _FriendState extends State<Friend>
                 ),
               );
             },
-            itemCount: 10,
+            itemCount: 1,
             itemBuilder: (context, index) {
+              final userProv = Provider.of<UserProvider>(context);
               return ListTile(
                 leading: CircleAvatar(
                   backgroundColor: Colors.teal,
+                  backgroundImage: NetworkImage(userProv.getUserModel.picture),
                   radius: 25,
                 ),
                 title: Text(
-                  'Name',
+                  userProv.getUserModel.name,
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.teal),
                 ),
